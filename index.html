@@ -16,25 +16,21 @@
             letter-spacing: 0.05em;
         }
 
-        /* Carousel fade effect */
         .carousel img { opacity: 0; transition: opacity 1s ease-in-out; position: absolute; }
         .carousel img.active { opacity: 1; }
 
-        /* Hover and transitions for cards */
         .card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .card:hover { transform: translateY(-10px) scale(1.05); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); }
 
-        /* Button transitions */
         button, #DownButton { transition: background-color 0.3s ease, transform 0.2s ease; }
         button:hover, #DownButton:hover { background-color: #4a5568; transform: scale(1.05); }
 
-        /* Secondary projects toggle */
         #secondary-projects.hidden { display: none; }
 
         .card {
-            border-radius: 0.5rem; /* Rounded corners */
-            overflow: hidden; /* Ensure content fits within rounded corners */
-            background-color: #2d3748; /* Fallback card background */
+            border-radius: 0.5rem;
+            overflow: hidden;
+            background-color: #2d3748;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -44,47 +40,98 @@
         }
 
         .card-banner {
-            width: 100%; /* Full width of the card */
-            height: 150px; /* Fixed banner height */
-            object-fit: cover; /* Ensures the image fills the space properly */
-            display: block; /* Ensures the image behaves like a block element */
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
         }
 
         .blurred {
             transition: all 0.5s;
-            filter: blur(5px); /* Applique un flou de 5px */
-            pointer-events: none; /* Empêche les interactions avec les éléments floutés */
+            filter: blur(5px);
+            pointer-events: none;
         }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
 <div id="Main-Page">
-    <!-- Header -->
     <header id="NavBar" class="fixed top-0 w-full bg-gray-800/70 shadow-md z-50">
         <div class="container mx-auto flex justify-between items-center py-4 px-6">
-                <h1 class="text-xl font-bold">Lecoq Damien</h1>
-                <nav class="flex space-x-4">
-                <a href="#accueil" class="hover:underline">Accueil</a>
-                <a href="#competences" class="hover:underline">Compétences</a>
-                <a href="#projets" class="hover:underline">Projets</a>
-                <a href="#a-propos" class="hover:underline">À propos</a>
-                <a href="#contact" class="hover:underline">Contact</a>
+            <h1 class="text-xl font-bold">Lecoq Damien</h1>
+                <nav class="hidden md:flex space-x-4">
+                <a href="#accueil" class="relative inline-block group">
+                    <span class="absolute left-0 bottom-0 h-0.5 bg-zinc-200 w-0 transition-all group-hover:w-full"></span>
+                    <span class="transition-all group-hover:text-zinc-200">Accueil</span>
+                </a>
+                <a href="#competences" class="relative inline-block group">
+                    <span class="absolute left-0 bottom-0 h-0.5 bg-zinc-200 w-0 transition-all group-hover:w-full"></span>
+                    <span class="transition-all group-hover:text-zinc-200">Competences</span>
+                </a>
+                <a href="#projets" class="relative inline-block group">
+                    <span class="absolute left-0 bottom-0 h-0.5 bg-zinc-200 w-0 transition-all group-hover:w-full"></span>
+                    <span class="transition-all group-hover:text-zinc-200">Projets</span>
+                </a>
+                <a href="#a-propos" class="relative inline-block group">
+                    <span class="absolute left-0 bottom-0 h-0.5 bg-zinc-200 w-0 transition-all group-hover:w-full"></span>
+                    <span class="transition-all group-hover:text-zinc-200">À propos</span>
+                </a>
+                <a href="#contact" class="relative inline-block group">
+                    <span class="absolute left-0 bottom-0 h-0.5 bg-zinc-200 w-0 transition-all group-hover:w-full"></span>
+                    <span class="transition-all group-hover:text-zinc-200">Contact</span>
+                </a>
             </nav>
-            <nav class="flex space-x-5">
-              <a href="https://github.com" target="_blank" class="hover:underline text-xl"><i class="fa-brands fa-github"></i></a>
-              <a href="https://linkedin.com" target="_blank" class="hover:underline text-xl"><i class="fa-brands fa-linkedin-in"></i></a>
-              <a href="https://linkedin.com" target="_blank" class="hover:underline text-xl"><i class="fa-solid fa-envelope"></i></i></a>
+    
+            <nav class="hidden md:flex space-x-5">
+                <a href="https://github.com" target="_blank" class="hover:text-zinc-200 transition-all text-xl"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank" class="hover:text-zinc-200 transition-all text-xl"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://linkedin.com" target="_blank" class="hover:text-zinc-200 transition-all text-xl"><i class="fa-solid fa-envelope"></i></a>
+            </nav>
+    
+            <div class="md:hidden flex items-center">
+                <button id="menu-toggle" class="text-white text-2xl relative">
+                    <span class="block w-6 h-0.5 bg-white mb-1 transition-all duration-300 ease-in-out transform" id="burger-icon-1"></span>
+                    <span class="block w-6 h-0.5 bg-white mb-1 transition-all duration-300 ease-in-out transform" id="burger-icon-2"></span>
+                    <span class="block w-6 h-0.5 bg-white mb-1 transition-all duration-300 ease-in-out transform" id="burger-icon-3"></span>
+                </button>
+            </div>
+        </div>
+    
+        <div id="mobile-menu" class="hidden bg-gray-800/70 md:hidden">
+            <nav class="flex flex-col items-center space-y-4 py-4">
+                <a href="#accueil" class="relative inline-block group">
+                    <span class="absolute left-0 bottom-0 h-0.5 bg-zinc-200 w-0 transition-all group-hover:w-full"></span>
+                    <span class="transition-all group-hover:text-zinc-200">Accueil</span>
+                </a>
+                <a href="#competences" class="relative inline-block group">
+                    <span class="absolute left-0 bottom-0 h-0.5 bg-zinc-200 w-0 transition-all group-hover:w-full"></span>
+                    <span class="transition-all group-hover:text-zinc-200">Competences</span>
+                </a>
+                <a href="#projets" class="relative inline-block group">
+                    <span class="absolute left-0 bottom-0 h-0.5 bg-zinc-200 w-0 transition-all group-hover:w-full"></span>
+                    <span class="transition-all group-hover:text-zinc-200">Projets</span>
+                </a>
+                <a href="#a-propos" class="relative inline-block group">
+                    <span class="absolute left-0 bottom-0 h-0.5 bg-zinc-200 w-0 transition-all group-hover:w-full"></span>
+                    <span class="transition-all group-hover:text-zinc-200">À propos</span>
+                </a>
+                <a href="#contact" class="relative inline-block group">
+                    <span class="absolute left-0 bottom-0 h-0.5 bg-zinc-200 w-0 transition-all group-hover:w-full"></span>
+                    <span class="transition-all group-hover:text-zinc-200">Contact</span>
+                </a>
+                <div class="flex space-x-5 mt-4">
+                    <a href="https://github.com" target="_blank" class="hover:text-zinc-200 transition-all text-xl"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://linkedin.com" target="_blank" class="hover:text-zinc-200 transition-all text-xl"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://linkedin.com" target="_blank" class="hover:text-zinc-200 transition-all text-xl"><i class="fa-solid fa-envelope"></i></a>
+                </div>
             </nav>
         </div>
     </header>
 
-    <!-- Accueil -->
     <section id="accueil" class="h-screen flex items-center justify-center relative">
         <div class="absolute inset-0 carousel">
-            <!-- Carousel Images -->
-            <img src="./images/MainPython.png" alt="Image 4" class="absolute inset-0 w-full h-full object-cover">
-            <img src="./images/MainUefn.png" alt="Image 1" class="absolute inset-0 w-full h-full object-cover">
-            <img src="./images/MainRaveon.png" alt="Image 2" class="absolute inset-0 w-full h-full object-cover active">
+            <img src="./images/MainPython.png" alt="Image 4" class="absolute inset-0 w-full h-full object-cover active">
+            <img src="./images/MainFtn2.png" alt="Image 1" class="absolute inset-0 w-full h-full object-cover">
+            <img src="./images/MainRaveon.png" alt="Image 2" class="absolute inset-0 w-full h-full object-cover">
             <img src="./images/MainRobocup.png" alt="Image 3" class="absolute inset-0 w-full h-full object-cover">
             <img src="./images/MainUefn2.png" alt="Image 5" class="absolute inset-0 w-full h-full object-cover">
         </div>
@@ -95,152 +142,18 @@
         <a id="DownButton" href="#competences" class="absolute bottom-48 border rounded-full px-3.5 py-2 text-xl"><i class="fa-solid fa-arrow-down"></i></a>
     </section>
 
-    <!-- Compétences -->
     <section id="competences" class="py-20 bg-gray-800">
         <div class="container mx-auto text-center">
             <h2 class="text-3xl font-bold mb-8">Compétences techniques</h2>
-            <div class="flex justify-center mb-4 pb-8">
-              <button class="mx-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 filter-button" data-category="All">Tout</button>
-              <button class="mx-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 filter-button border-0 border-b-2 border-b-red-400" data-category="Langages">Langages de programmation</button>
-              <button class="mx-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 filter-button border-0 border-b-2 border-b-blue-400" data-category="Web">Web</button>
-              <button class="mx-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 filter-button border-0 border-b-2 border-b-yellow-400" data-category="Data">Data</button>
-              <button class="mx-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 filter-button border-0 border-b-2 border-b-purple-400" data-category="DevOps">DevOps</button>
-              <button class="mx-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 filter-button border-0 border-b-2 border-b-zinc-400" data-category="Others">Autres</button>
+            <div class="flex flex-wrap justify-center gap-2 mb-4 pb-8">
+                <button class="mx-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 filter-button" data-category="All">Tout</button>
+                <button class="mx-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 filter-button border-0 border-b-2 border-b-red-400" data-category="Langages">Langages de programmation</button>
+                <button class="mx-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 filter-button border-0 border-b-2 border-b-blue-400" data-category="Web">Web</button>
+                <button class="mx-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 filter-button border-0 border-b-2 border-b-yellow-400" data-category="Data">Data</button>
+                <button class="mx-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 filter-button border-0 border-b-2 border-b-purple-400" data-category="DevOps">DevOps</button>
+                <button class="mx-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 filter-button border-0 border-b-2 border-b-zinc-400" data-category="Others">Autres</button>
             </div>
-            <!-- Cards (à compléter) -->
-            <div class="grid grid-cols-1 md:grid-cols-6 gap-4" id="skills-grid">
-                <div class="card bg-gray-700 p-4 rounded-lg border-0 border-b-4 border-b-red-400" data-category="Langages">
-                    <div class="flex items-center">
-                        <img src="./images/Logos/Logo_Java.png" alt="Logo Java" class="w-8 h-8 mr-4">
-                        <h3 class="text-xl font-semibold">Java</h3>
-                    </div>
-                </div>
-                <div class="card bg-gray-700 p-4 rounded-lg border-0 border-b-4 border-b-red-400" data-category="Langages">
-                    <div class="flex items-center">
-                        <img src="./images/Logos/Logo_CSharp.png" alt="Logo C#" class="w-8 h-8 mr-4">
-                        <h3 class="text-xl font-semibold">C#</h3>
-                    </div>
-                </div>
-                <div class="card bg-gray-700 p-4 rounded-lg border-0 border-b-4 border-b-red-400" data-category="Langages">
-                    <div class="flex items-center">
-                        <img src="./images/Logos/Logo_C.png" alt="Logo C" class="w-8 h-8 mr-4">
-                        <h3 class="text-xl font-semibold">C</h3>
-                    </div>
-                </div>
-                <div class="card bg-gray-700 p-4 rounded-lg border-0 border-b-4 border-b-red-400" data-category="Langages">
-                    <div class="flex items-center">
-                        <img src="./images/Logos/Logo_Python.png" alt="Logo Python" class="w-8 h-8 mr-4">
-                        <h3 class="text-xl font-semibold">Python</h3>
-                    </div>
-                </div>
-                <div class="card bg-gray-700 p-4 rounded-lg border-0 border-b-4 border-b-red-400" data-category="Langages">
-                    <div class="flex items-center">
-                        <img src="./images/Logos/Logo_PHP.png" alt="Logo PHP" class="w-8 h-8 mr-4">
-                        <h3 class="text-xl font-semibold">PHP</h3>
-                    </div>
-                </div>
-                <div class="card bg-gray-700 p-4 rounded-lg border-0 border-b-4 border-b-red-400" data-category="Langages">
-                    <div class="flex items-center">
-                        <img src="./images/Logos/Logo_Verse.png" alt="Logo Verse" class="w-8 h-8 mr-4">
-                        <h3 class="text-xl font-semibold">Verse</h3>
-                    </div>
-                </div>
-                <div class="card bg-gray-700 p-4 rounded-lg border-0 border-b-4 border-b-blue-400" data-category="Web">
-                    <div class="flex items-center">
-                        <img src="./images/Logos/Logo_HTML.png" alt="Logo HTML" class="w-8 h-8 mr-4">
-                        <h3 class="text-xl font-semibold">HTML</h3>
-                    </div>
-                </div>
-                <div class="card bg-gray-700 p-4 rounded-lg border-0 border-b-4 border-b-blue-400" data-category="Web">
-                    <div class="flex items-center">
-                        <img src="./images/Logos/Logo_CSS.png" alt="Logo CSS" class="w-8 h-8 mr-4">
-                        <h3 class="text-xl font-semibold">CSS</h3>
-                    </div>
-                </div>
-                <div class="card bg-gray-700 p-4 rounded-lg border-0 border-b-4 border-b-blue-400" data-category="Web">
-                    <div class="flex items-center">
-                        <img src="./images/Logos/Logo_Tailwind.png" alt="Logo Tailwind" class="w-8 h-8 mr-4">
-                        <h3 class="text-xl font-semibold">Tailwind</h3>
-                    </div>
-                </div>
-                <div class="card bg-gray-700 p-4 rounded-lg border-0 border-b-4 border-b-blue-400" data-category="Web">
-                    <div class="flex items-center">
-                        <img src="./images/Logos/Logo_JS.png" alt="Logo JavaScript" class="w-8 h-8 mr-4">
-                        <h3 class="text-xl font-semibold">JavaScript</h3>
-                    </div>
-                </div>
-                <div class="card bg-gray-700 p-4 rounded-lg border-0 border-b-4 border-b-blue-400" data-category="Web">
-                    <div class="flex items-center">
-                        <img src="./images/Logos/Logo_React.png" alt="Logo React" class="w-8 h-8 mr-4">
-                        <h3 class="text-xl font-semibold">React</h3>
-                    </div>
-                </div>
-                <div class="card bg-gray-700 p-4 rounded-lg border-0 border-b-4 border-b-blue-400" data-category="Web">
-                    <div class="flex items-center">
-                        <img src="./images/Logos/Logo_TS.png" alt="Logo TypeScript" class="w-8 h-8 mr-4">
-                        <h3 class="text-xl font-semibold">TypeScript</h3>
-                    </div>
-                </div>
-                <div class="card bg-gray-700 p-4 rounded-lg border-0 border-b-4 border-b-blue-400" data-category="Web">
-                    <div class="flex items-center">
-                        <img src="./images/Logos/Logo_Symfony.png" alt="Logo Symfony" class="w-8 h-8 mr-4">
-                        <h3 class="text-xl font-semibold">Symfony</h3>
-                    </div>
-                </div>
-                <div class="card bg-gray-700 p-4 rounded-lg border-0 border-b-4 border-b-blue-400" data-category="Web">
-                    <div class="flex items-center">
-                        <img src="./images/Logos/Logo_Twig.png" alt="Logo Twig" class="w-8 h-8 mr-4">
-                        <h3 class="text-xl font-semibold">Twig</h3>
-                    </div>
-                </div>
-                <div class="card bg-gray-700 p-4 rounded-lg border-0 border-b-4 border-b-yellow-400" data-category="Data">
-                    <div class="flex items-center">
-                        <img src="./images/Logos/Logo_SQL.png" alt="Logo SQL" class="w-8 h-8 mr-4">
-                        <h3 class="text-xl font-semibold">SQL</h3>
-                    </div>
-                </div>
-                <div class="card bg-gray-700 p-4 rounded-lg border-0 border-b-4 border-b-purple-400" data-category="DevOps">
-                    <div class="flex items-center">
-                        <img src="./images/Logos/Logo_Git.png" alt="Logo Git" class="w-8 h-8 mr-4">
-                        <h3 class="text-xl font-semibold">Git</h3>
-                    </div>
-                </div>
-                <div class="card bg-gray-700 p-4 rounded-lg border-0 border-b-4 border-b-purple-400" data-category="DevOps">
-                    <div class="flex items-center">
-                        <img src="./images/Logos/Logo_GitLab.png" alt="Logo Gitlab" class="w-8 h-8 mr-4">
-                        <h3 class="text-xl font-semibold">Gitlab</h3>
-                    </div>
-                </div>
-                <div class="card bg-gray-700 p-4 rounded-lg border-0 border-b-4 border-b-zinc-400" data-category="Others">
-                    <div class="flex items-center">
-                        <img src="./images/Logos/Logo_Shell.png" alt="Logo Bash" class="w-8 h-8 mr-4">
-                        <h3 class="text-xl font-semibold">Bash</h3>
-                    </div>
-                </div>
-                <div class="card bg-gray-700 p-4 rounded-lg border-0 border-b-4 border-b-zinc-400" data-category="Others">
-                    <div class="flex items-center">
-                        <img src="./images/Logos/Logo_UE.png" alt="Logo Unreal Engine" class="w-8 h-8 mr-4">
-                        <h3 class="text-xl font-semibold">Unreal Engine</h3>
-                    </div>
-                </div>
-                <div class="card bg-gray-700 p-4 rounded-lg border-0 border-b-4 border-b-zinc-400" data-category="Others">
-                    <div class="flex items-center">
-                        <img src="./images/Logos/Logo_UML.png" alt="Logo UML" class="w-8 h-8 mr-4">
-                        <h3 class="text-xl font-semibold">UML</h3>
-                    </div>
-                </div>
-                <div class="card bg-gray-700 p-4 rounded-lg border-0 border-b-4 border-b-zinc-400" data-category="Others">
-                    <div class="flex items-center">
-                        <img src="./images/Logos/Logo_Notion.png" alt="Logo Notion" class="w-8 h-8 mr-4">
-                        <h3 class="text-xl font-semibold">Notion</h3>
-                    </div>
-                </div>
-                <div class="card bg-gray-700 p-4 rounded-lg border-0 border-b-4 border-b-zinc-400" data-category="Others">
-                    <div class="flex items-center">
-                        <img src="./images/Logos/Logo_Canva.png" alt="Logo Canva" class="w-8 h-8 mr-4">
-                        <h3 class="text-xl font-semibold">Canva</h3>
-                    </div>
-                </div>
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-4" id="skills-grid">
             </div>
         </div>
     </section>
@@ -256,24 +169,28 @@
       </div>
     </section>
 
-    <!-- À propos -->
-    <section id="a-propos" class="py-20 bg-gray-800">
-        <div class="container mx-auto flex flex-col md:flex-row items-center text-center md:text-left">
-            <img src="#" alt="Photo de Damien Lecoq" class="w-64 h-48 object-cover rounded-lg md:mr-8">
-            <p class="max-w-prose">Description Placeholder</p>
+    <section id="a-propos" class="py-10 bg-gray-800 flex flex-col items-center justify-center">
+        <h2 class="text-3xl font-bold mb-8">À propos</h2>
+        <div class="container mx-auto flex flex-col justify-center items-center md:flex-row text-center md:text-left">
+            <img src="./images/Profil2.png" alt="Photo de Damien Lecoq" class="w-64 h-80 object-cover rounded-2xl md:mr-8">
+            <p class="text-justify max-w-prose mt-6 md:mt-0 md:px-6 leading-relaxed tracking-wide text-gray-300">
+                Bien le bonjour <span class="inline-block animate-wave">👋</span>  Je suis <span class="font-bold text-white">Damien Lecoq</span>, étudiant en informatique basé à Bordeaux.<br><br>
+                Je suis actuellement en deuxième année de <span class="font-semibold text-yellow-400">BUT Informatique</span> à l'IUT de Gradignan.<br><br>
+                Depuis mon plus jeune âge, j'ai été fasciné par le <span class="font-bold text-green-400">développement de jeux vidéo</span>, une passion qui s'est étendue au fil des années au <span class="font-bold text-red-400">développement d'applications</span> et de <span class="font-bold text-blue-400">sites web</span>.<br><br>
+                Ce que j'aime par-dessus tout, c'est transformer mes idées en projets concrets, réalisés en autonomie ou en équipe.<br>
+            </p>
         </div>
+        <button class="px-6 py-3 bg-gray-700 hover:bg-gray-600 rounded-2xl mt-6">Télécharger mon CV</button>
     </section>
 
-    <!-- Contact -->
     <section id="contact" class="py-20">
         <div class="container mx-auto text-center">
             <h2 class="text-3xl font-bold mb-4">Contact</h2>
-            <p>Email : <a href="mailto:example@example.com" class="hover:underline">example@example.com</a></p>
-            <p>Téléphone : <a href="tel:+123456789" class="hover:underline">+12 34 56 78 90</a></p>
+            <p><i class="fa-regular fa-envelope"></i> Email : <a href="mailto:example@example.com" class="hover:underline">damienlecoq1@gmail.com</a></p>
+            <p><i class="fa-solid fa-phone"></i> Tel : <a href="tel:+123456789" class="hover:underline">+33 0630992655</a></p>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-gray-800 py-4">
         <div class="container mx-auto text-center">
             <p>© 2025 Lecoq Damien. Tous droits réservés.</p>
@@ -281,6 +198,9 @@
     </footer>
 </div>
     <script src="./src/data.js"></script>
+    <script src="./src/header.js"></script>
+    <script src="./src/skills.js"></script>
+    <script src="./src/projects.js"></script>
     <script src="./src/test.js"></script>
 </body>
 </html>

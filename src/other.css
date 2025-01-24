@@ -1,8 +1,0 @@
-.slides{
-    animation: 10s slide infinite linear;
-}
-
-@keyframes slide{
-    from{ transform: translate(0); }
-    to { transform: translate(-200%); }
-}
