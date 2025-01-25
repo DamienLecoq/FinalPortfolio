@@ -107,63 +107,69 @@ showProjectButton.addEventListener('click', () => {
 const mainPage = document.getElementById("Main-Page");
 
 function openPopup(project) {
-    const popup = document.createElement('div');
-    popup.classList.add('fixed', 'top-0', 'left-0', 'w-full', 'h-full', 'flex', 'items-center', 'justify-center', 'bg-black', 'bg-opacity-50', 'z-50');
-    
-    const popupContent = document.createElement('div');
-    popupContent.classList.add('bg-gray-700', 'rounded-lg', 'shadow-lg', 'max-w-screen-md', 'w-full', 'relative');
+  const popup = document.createElement('div');
+  popup.classList.add('fixed', 'top-0', 'left-0', 'w-full', 'h-full', 'flex', 'items-center', 'justify-center', 'bg-black', 'bg-opacity-50', 'z-50');
+  
+  const popupContent = document.createElement('div');
+  popupContent.classList.add('bg-gray-700', 'rounded-lg', 'shadow-lg', 'max-w-screen-md', 'w-full', 'relative');
 
-    
-    const img = document.createElement('img');
-    img.src = project.image;
-    img.alt = project.title;
-    img.classList.add('w-full', 'h-64', 'object-cover', 'rounded-t-lg', 'm-0');
-    
-    const title = document.createElement('h3');
-    title.classList.add('text-xl', 'px-8', 'font-semibold', 'mt-4', 'text-center', 'text-white', 'break-words');
-    title.textContent = project.title;
-    
-    const description = document.createElement('p');
-    description.classList.add('mt-2', 'px-8', 'text-center', 'text-white', 'break-words', 'whitespace-normal');
-    description.textContent = project.description;
+  const img = document.createElement('img');
+  img.src = project.image;
+  img.alt = project.title;
+  img.classList.add('w-full', 'h-64', 'object-cover', 'rounded-t-lg', 'm-0');
   
-    const date = document.createElement('p');
-    date.classList.add('absolute', 'bottom-4', 'left-4', 'text-gray-400', 'text-sm');
-    date.textContent = `Date: ${project.date}`;
+  const title = document.createElement('h3');
+  title.classList.add('text-xl', 'px-8', 'font-semibold', 'mt-4', 'text-center', 'text-white', 'break-words');
+  title.textContent = project.title;
   
-    const skillsContainer = document.createElement('div');
-    skillsContainer.classList.add('mt-4', 'flex', 'justify-center', 'gap-4');
-    project.skills.forEach(skill => {
-      const skillTag = document.createElement('span');
-      skillTag.classList.add('bg-gray-600', 'px-2', 'py-1', 'mb-8', 'rounded', 'flex', 'items-center');
-      
-      const skillLogo = document.createElement('img');
-      skillLogo.src = skill.logo;
-      skillLogo.alt = `Logo ${skill.name}`;
-      skillLogo.classList.add('w-4', 'h-4', 'mr-2');
-      
-      skillTag.appendChild(skillLogo);
-      skillTag.appendChild(document.createTextNode(skill.name));
-      skillsContainer.appendChild(skillTag);
-    });
-  
-    const closeButton = document.createElement('button');
-    closeButton.classList.add('absolute', 'top-2', 'right-2', 'bg-red-700', 'text-zinc-200', 'px-3.5', 'py-2', 'rounded-full', 'hover:bg-red-900');
-    closeButton.innerHTML = '<i class="fa-solid fa-xmark"></i>';
-    closeButton.addEventListener('click', () => {
+  const description = document.createElement('p');
+  description.classList.add('mt-2', 'px-8', 'text-center', 'text-white', 'break-words', 'whitespace-normal');
+  description.textContent = project.description;
+
+  const date = document.createElement('p');
+  date.classList.add('absolute', 'bottom-4', 'left-4', 'text-gray-400', 'text-sm');
+  date.textContent = `Date: ${project.date}`;
+
+  const skillsContainer = document.createElement('div');
+  skillsContainer.classList.add('mt-4', 'flex', 'justify-center', 'flex-wrap', 'gap-4');
+  project.skills.forEach(skill => {
+    const skillTag = document.createElement('span');
+    skillTag.classList.add('bg-gray-600', 'px-2', 'py-1', 'mb-8', 'rounded', 'flex', 'items-center');
+    
+    const skillLogo = document.createElement('img');
+    skillLogo.src = skill.logo;
+    skillLogo.alt = `Logo ${skill.name}`;
+    skillLogo.classList.add('w-4', 'h-4', 'mr-2');
+    
+    skillTag.appendChild(skillLogo);
+    skillTag.appendChild(document.createTextNode(skill.name));
+    skillsContainer.appendChild(skillTag);
+  });
+
+  const closeButton = document.createElement('button');
+  closeButton.classList.add('absolute', 'top-2', 'right-2', 'bg-red-700', 'text-zinc-200', 'px-2.5', 'py-1', 'rounded-full', 'hover:bg-red-900');
+  closeButton.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+  closeButton.addEventListener('click', () => {
       popup.remove();
       mainPage.classList.remove('blurred');
-    });
+  });
+
+  popup.addEventListener('click', (event) => {
+      if (!popupContent.contains(event.target)) {
+          popup.remove();
+          mainPage.classList.remove('blurred');
+      }
+  });
+
+  popupContent.appendChild(img);
+  popupContent.appendChild(title);
+  popupContent.appendChild(description);
+  popupContent.appendChild(date);
+  popupContent.appendChild(skillsContainer);
+  popupContent.appendChild(closeButton);
   
-    popupContent.appendChild(img);
-    popupContent.appendChild(title);
-    popupContent.appendChild(description);
-    popupContent.appendChild(date);
-    popupContent.appendChild(skillsContainer);
-    popupContent.appendChild(closeButton);
-    
-    popup.appendChild(popupContent);
-    document.body.appendChild(popup);
-  
-    mainPage.classList.add('blurred');
-  }
+  popup.appendChild(popupContent);
+  document.body.appendChild(popup);
+
+  mainPage.classList.add('blurred');
+}

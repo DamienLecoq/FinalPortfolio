@@ -55,7 +55,7 @@
 </head>
 <body class="bg-gray-900 text-white">
 <div id="Main-Page">
-    <header id="NavBar" class="fixed top-0 w-full bg-gray-800/70 shadow-md z-50">
+    <header id="NavBar" class="fixed top-0 w-full bg-gray-800/30 shadow-md z-50 backdrop-blur-lg">
         <div class="container mx-auto flex justify-between items-center py-4 px-6">
             <h1 class="text-xl font-bold">Lecoq Damien</h1>
                 <nav class="hidden md:flex space-x-4">
@@ -96,7 +96,7 @@
             </div>
         </div>
     
-        <div id="mobile-menu" class="hidden bg-gray-800/70 md:hidden">
+        <div id="mobile-menu" class="hidden bg-gray-800/30 md:hidden backdrop-blur-lg">
             <nav class="flex flex-col items-center space-y-4 py-4">
                 <a href="#accueil" class="relative inline-block group">
                     <span class="absolute left-0 bottom-0 h-0.5 bg-zinc-200 w-0 transition-all group-hover:w-full"></span>
@@ -153,7 +153,7 @@
                 <button class="mx-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 filter-button border-0 border-b-2 border-b-purple-400" data-category="DevOps">DevOps</button>
                 <button class="mx-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 filter-button border-0 border-b-2 border-b-zinc-400" data-category="Others">Autres</button>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-6 gap-4" id="skills-grid">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 right-" id="skills-grid">
             </div>
         </div>
     </section>
@@ -163,7 +163,7 @@
           <h2 class="text-3xl font-bold mb-8">Projets</h2>
           <div id="cards-container" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           </div>
-          <button id="ShowProjectButton" class="px-6 py-3 bg-gray-700 hover:bg-gray-600">Tous les projets</button>
+          <button id="ShowProjectButton" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 rounded-2xl">Tous les projets</button>
           <div id="secondary-projects" class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-8">
           </div>
       </div>
@@ -172,11 +172,11 @@
     <section id="a-propos" class="py-10 bg-gray-800 flex flex-col items-center justify-center">
         <h2 class="text-3xl font-bold mb-8">À propos</h2>
         <div class="container mx-auto flex flex-col justify-center items-center md:flex-row text-center md:text-left">
-            <img src="./images/Profil2.png" alt="Photo de Damien Lecoq" class="w-64 h-80 object-cover rounded-2xl md:mr-8">
-            <p class="text-justify max-w-prose mt-6 md:mt-0 md:px-6 leading-relaxed tracking-wide text-gray-300">
+            <img src="./images/Profil2.png" alt="Photo de Damien Lecoq" class="w-64 h-80 object-cover rounded-2xl md:mr-8 hover:shadow-2xl hover:shadow-zinc-500/50 transition-shadow duration-300">
+            <p class="text-justify max-w-prose px-6 mt-6 md:mt-0 md:px-6 leading-relaxed tracking-wide text-gray-300">
                 Bien le bonjour <span class="inline-block animate-wave">👋</span>  Je suis <span class="font-bold text-white">Damien Lecoq</span>, étudiant en informatique basé à Bordeaux.<br><br>
-                Je suis actuellement en deuxième année de <span class="font-semibold text-yellow-400">BUT Informatique</span> à l'IUT de Gradignan.<br><br>
-                Depuis mon plus jeune âge, j'ai été fasciné par le <span class="font-bold text-green-400">développement de jeux vidéo</span>, une passion qui s'est étendue au fil des années au <span class="font-bold text-red-400">développement d'applications</span> et de <span class="font-bold text-blue-400">sites web</span>.<br><br>
+                Je suis actuellement en deuxième année de <span class="font-semibold text-white">BUT Informatique</span> à l'IUT de Gradignan.<br><br>
+                Depuis mon plus jeune âge, j'ai été fasciné par le <span class="font-bold text-green-400">développement de jeux vidéo</span>, une passion qui s'est étendue au fil des années au <span class="font-bold text-red-400">développement d'applications</span> et de <span class="font-bold text-sky-400">sites web</span>.<br><br>
                 Ce que j'aime par-dessus tout, c'est transformer mes idées en projets concrets, réalisés en autonomie ou en équipe.<br>
             </p>
         </div>
